@@ -41,21 +41,27 @@ describe("App", () => {
       	expect(computer.hardDriveSpace).toBe(100)
       })
 
+      describe("No space to installProgram",() =>{
+
       	beforeEach(function(done){
       		computer.installProgram(612,function(){
       			done();
       	})
       })
-      it("will not install the program if there is insufficient space", () => {
-      	expect(computer.hardDriveSpace).toBe(100)
+        it("will not install the program if there is insufficient space", () => {
+          expect(computer.hardDriveSpace).toBe(100)
+        })
       })
+     
     })
 
     describe("format", () => {
-    	computer = new Computer
-    	computer.format()
+      computer = new Computer
+      
       it("resets the hard drive to 512, even after programs have been installed", () => {
-      	expect(computer.hardDriveSpace).toBe(512)
+    	computer.format()
+        
+      	expect(computer.hardDriveSpace).toEqual(512)
       });
     })
 
